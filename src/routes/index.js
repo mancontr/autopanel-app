@@ -25,11 +25,14 @@ const AutoPanelAdapter = ({ match, history }) => {
   return (
     <AutoPanel settings={currSettings}>
       <Route path={match.path + '/providers/:provider/*'}
-        component={ProviderCallback} />
+        component={ProviderCallbackAdapter} />
       <Route path={match.path} component={MainLayoutAdapter} />
     </AutoPanel>
   )
 }
+
+const ProviderCallbackAdapter = ({ match }) =>
+  <ProviderCallback provider={match.params.provider} />
 
 const MainLayoutAdapter = ({ match }) =>
   <MainLayout>

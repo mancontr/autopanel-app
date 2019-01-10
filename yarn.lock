@@ -1397,10 +1397,10 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-autopanel@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/autopanel/-/autopanel-0.3.0.tgz#5756b6767667e072b914cee73473faefcc46c130"
-  integrity sha512-Vu7D4wgP5a2Y8wJy5Xe3YztO7u02NbEWbj8svKQZjfsSlNi+v+PseQ1RytyjHlEiUWS6VdPy9XvwEiv+qlg1dw==
+autopanel@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/autopanel/-/autopanel-0.3.1.tgz#5b9f80d3491f57490778cf439306c7a6c80c1db5"
+  integrity sha512-gO8OzPCaP8hmWdLIgrkj3FND+GgCEgMPTQpTNETWUAQR89HFbKiG9O/AO1uUvxQ9pyOJXlNPFdyGAWM3ijG1cw==
   dependencies:
     query-string "^4.2.2"
     react-quill "^1.3.3"
