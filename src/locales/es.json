@@ -7,6 +7,7 @@
   "entities.new": "Crear nueva entrada",
   "entities.title.create": "Crear {type}",
   "entities.title.edit": "Editar {type} {id}",
+  "entities.unknown-type": "Campo {name}: Tipo desconocido: {type}",
   "error.1": "Se ha producido un error.",
   "error.2": "Por favor, recargue la página.",
   "loading": "Cargando ...",

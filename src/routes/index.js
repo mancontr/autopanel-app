@@ -1,8 +1,8 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route, Switch } from 'react-router-dom'
 import { components } from 'autopanel'
 const {
-  Wrapper,
+  AutoPanel,
   MainLayout,
   ProjectLayout,
   ProjectPicker,
@@ -14,30 +14,63 @@ const {
   Settings
 } = components
 
-const createRoutes = () => (
+const settings = {}
+
+const AutoPanelAdapter = ({ match, history }) => {
+  const currSettings = {
+    ...settings,
+    navigate: history.push,
+    prefix: match.path
+  }
+  return (
+    <AutoPanel settings={currSettings}>
+      <Route path={match.path + '/providers/:provider/*'}
+        component={ProviderCallback} />
+      <Route path={match.path} component={MainLayoutAdapter} />
+    </AutoPanel>
+  )
+}
+
+const MainLayoutAdapter = ({ match }) =>
+  <MainLayout>
+    <Route exact path={match.path} component={ProjectPicker} />
+    <Route path={match.path + '/project/:projectId'}
+      component={ProjectLayoutAdapter} />
+  </MainLayout>
+
+const ProjectLayoutAdapter = ({ match }) =>
+  <ProjectLayout projectId={match.params.projectId}>
+    <Route exact path={match.path} component={Dashboard} />
+    <Route path={match.path + '/entities'} component={EntitiesAdapter} />
+    <Route path={match.path + '/settings'} component={Settings} />
+  </ProjectLayout>
+
+const EntitiesAdapter = ({ match }) =>
   <React.Fragment>
-    <Route component={Wrapper}>
-      <Route path="/providers/:provider/*" component={ProviderCallback} />,
-      <Route path="/" component={MainLayout}>
-        <IndexRoute component={ProjectPicker} />
-        <Route path="/project/:projectId" component={ProjectLayout}>
-          <IndexRoute component={Dashboard} />
-          <Route path="entities">
-            <IndexRoute component={EntityTypes} />
-            <Route path=":entityType">
-              <IndexRoute component={EntityList} />
-              <Route path="new" component={EntityEdit} />
-              <Route path=":entityId" component={EntityEdit} />
-            </Route>
-          </Route>
-          <Route path="settings" component={Settings} />
-        </Route>
-      </Route>
-    </Route>
+    <Route exact path={match.path} component={EntityTypes} />
+    <Route path={match.path + '/:entityType'} component={EntityTypeAdapter} />
   </React.Fragment>
+
+const EntityTypeAdapter = ({ match }) =>
+  <React.Fragment>
+    <Route exact path={match.path} component={EntityListAdapter} />
+    <Switch>
+      <Route path={match.path + '/new'} component={EntityEditAdapter} />
+      <Route path={match.path + '/:entityId'} component={EntityEditAdapter} />
+    </Switch>
+  </React.Fragment>
+
+const EntityListAdapter = ({ match }) =>
+  <EntityList entityType={match.params.entityType} />
+
+const EntityEditAdapter = ({ match }) =>
+  <EntityEdit
+    entityType={match.params.entityType}
+    entityId={match.params.entityId}
+  />
+
+const App = () => __CLIENT__ && (
+  <Route path="" component={AutoPanelAdapter} />
 )
 
-const serverRoutes = () => <Route path="*" component={() => '...'} />
-
-const _export = __CLIENT__ ? createRoutes : serverRoutes
-export default _export // createRoutes
+export default App
