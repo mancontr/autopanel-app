@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { components } from 'autopanel'
 const {
   AutoPanel,
@@ -24,6 +25,9 @@ const AutoPanelAdapter = ({ match, history }) => {
   }
   return (
     <AutoPanel settings={currSettings}>
+      <Helmet>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+      </Helmet>
       <Route path={match.path + '/providers/:provider/*'}
         component={ProviderCallbackAdapter} />
       <Route path={match.path} component={MainLayoutAdapter} />
