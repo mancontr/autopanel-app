@@ -1414,10 +1414,10 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-autopanel@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/autopanel/-/autopanel-0.4.0.tgz#00742806ab110eb24d2cf8f6915aac956daf43ce"
-  integrity sha512-JfOwpb6obILTumUivleBAK/6apFFAE2H+Zm9Cok41vQPbLHDsg9pN4TJaWW42j2c54UcHSizR/aVp9dOHJExqA==
+autopanel@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/autopanel/-/autopanel-0.4.1.tgz#c45c1d4abdb4f009b00de0095958bbf76321c845"
+  integrity sha512-ZUg2bKrVlrSxharN5U3xivGqe6k6VtYYF5ep2cZUt5VoR5NGmggReVrhQWu0VhAfm6nQQyR0+cVvEzWvxxKB4w==
   dependencies:
     leaflet "^1.4.0"
     query-string "^4.2.2"
