@@ -24,6 +24,6 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": ">=7.6"
+    "node": "11"
   }
 }
